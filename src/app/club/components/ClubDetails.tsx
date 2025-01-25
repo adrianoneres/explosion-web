@@ -55,7 +55,7 @@ export default function ClubDetails() {
       <section className="md:max-w-[600px] mx-auto my-8">
         <h2 className="text-4xl text-slate-900 mb-4">Membros:</h2>
         <div className="flex flex-col gap-2">
-          {data.members.map((member, index) => (
+          {data.members?.map((member, index) => (
             <Link key={member.tag} href={`/player/${member.tag.replace('#', '%23')}`}>
               <div className="p-4 bg-gray-400 border-4 border-b-8 border-r-8 border-slate-900 hover:bg-gray-300 transition-all cursor-pointer">
                 <div className="flex items-center">

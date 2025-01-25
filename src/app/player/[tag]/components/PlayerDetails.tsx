@@ -25,6 +25,10 @@ export default function PlayerDetails({ tag }: PlayerDetailsProps) {
   const isAboveGoal = process.env.NEXT_PUBLIC_TROPHY_GOAL && data.trophies >= Number(process.env.NEXT_PUBLIC_TROPHY_GOAL);
   const goalDifference = process.env.NEXT_PUBLIC_TROPHY_GOAL ? Number(process.env.NEXT_PUBLIC_TROPHY_GOAL) - data.trophies : 0;
 
+  if (!data) {
+    return '';
+  }
+
   return (
     <>
       <section className="md:max-w-[600px] mx-auto">        
