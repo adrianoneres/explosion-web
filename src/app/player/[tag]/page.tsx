@@ -1,10 +1,13 @@
-'use client';
+import { Suspense } from "react";
 
-import { useParams } from "next/navigation"
+import Loading from "@/app/loading";
 import PlayerDetails from "./components/PlayerDetails";
 
 export default function PlayerPage() {
-  const { tag } = useParams();
 
-  return <PlayerDetails tag={tag as string} />
+  return (
+    <Suspense fallback={<Loading />}>
+      <PlayerDetails />
+    </Suspense>
+  )
 }

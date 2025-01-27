@@ -1,14 +1,13 @@
 
-'use client';
-
 import { Suspense } from "react";
 
 import ClubDetails from "./components/ClubDetails";
+import Loading from "../loading";
 
 export default function ClubPage() {
 
   return (
-    <Suspense fallback={<h1>Loading...</h1>}>
+    <Suspense fallback={<Loading />}>
       <ClubDetails />
     </Suspense>
   )

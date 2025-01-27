@@ -1,27 +1,16 @@
+'use client';
+
 import { use } from "react"
 import { format } from 'date-fns';
+import { useParams } from "next/navigation";
 
+import { getPlayer } from "@/services";
 import { Player } from "@/types/Player";
 import { Trophy } from "@/components/Trophy";
 
-type PlayerDetailsProps = {
-  tag: string;
-}
-
-async function fetchData(tag: string) {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_BS_API_URL}/players/${tag}`, {
-    headers: {
-      Authorization: `Bearer ${process.env.NEXT_PUBLIC_BS_API_KEY}`,
-    }
-  })
-
-  console.log('>> response', `${process.env.NEXT_PUBLIC_BS_API_URL}/players/${tag}`);
-
-  return response.json();
-}
-
-export default function PlayerDetails({ tag }: PlayerDetailsProps) {
-  const data: Player = use(fetchData(tag));
+export default function PlayerDetails() {
+  const { tag } = useParams();
+  const data: Player = use(getPlayer(tag as string));
   const isAboveGoal = process.env.NEXT_PUBLIC_TROPHY_GOAL && data.trophies >= Number(process.env.NEXT_PUBLIC_TROPHY_GOAL);
   const goalDifference = process.env.NEXT_PUBLIC_TROPHY_GOAL ? Number(process.env.NEXT_PUBLIC_TROPHY_GOAL) - data.trophies : 0;
 

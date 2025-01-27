@@ -1,23 +1,16 @@
+'use client';
+
 import { use } from "react"
+import Link from "next/link";
 import { format } from 'date-fns';
 
 import { Club } from "@/types/Club";
+import { getClub } from "@/services";
 import { Trophy } from "@/components/Trophy";
 import { Role } from "@/components/Role";
-import Link from "next/link";
-
-async function fetchData() {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_BS_API_URL}/clubs/${process.env.NEXT_PUBLIC_BS_CLUB_TAG}`, {
-    headers: {
-      Authorization: `Bearer ${process.env.NEXT_PUBLIC_BS_API_KEY}`,
-    }
-  })
-
-  return response.json();
-}
 
 export default function ClubDetails() {
-  const data: Club = use(fetchData());
+  const data: Club = use(getClub());
 
   return (
     <>
