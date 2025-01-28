@@ -9,5 +9,5 @@ export type Player = {
   duoVictories: number;
   icon: {
     id: number;
-  }
-}
+  };
+};

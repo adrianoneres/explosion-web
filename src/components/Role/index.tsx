@@ -1,6 +1,6 @@
 type RoleProps = {
   value: string;
-}
+};
 
 export function Role({ value }: RoleProps) {
   if (value === 'president') {
@@ -10,7 +10,7 @@ export function Role({ value }: RoleProps) {
   if (value === 'vicePresident') {
     return 'Vice-presidente';
   }
-  
+
   if (value === 'senior') {
     return 'Perito';
   }

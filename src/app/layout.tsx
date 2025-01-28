@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import localFont from 'next/font/local'
-import { Inter } from 'next/font/google'
+import localFont from "next/font/local";
+import { Inter } from "next/font/google";
 
 import { Header } from "@/components/Header";
 import "./globals.css";
@@ -18,12 +18,12 @@ const inter = Inter({
 const nougat = localFont({
   src: [
     {
-      path: '../../public/Nougat-ExtraBlack.ttf',
-      weight: '700'
-    }
+      path: "../../public/Nougat-ExtraBlack.ttf",
+      weight: "700",
+    },
   ],
-  variable: '--font-nougat'
-})
+  variable: "--font-nougat",
+});
 
 export default function RootLayout({
   children,
@@ -35,11 +35,9 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${nougat.variable} font-sansantialiased min-h-screen bg-gradient-to-b from-amber-300 to-amber-500`}
       >
-        <div className="my-8 mx-auto px-8">
+        <div className="mx-auto my-8 px-8">
           <Header />
-          <main className="mt-4">
-            {children}
-          </main>
+          <main className="mt-4">{children}</main>
         </div>
       </body>
     </html>

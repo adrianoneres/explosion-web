@@ -1,4 +1,4 @@
-import { Member } from "./Member";
+import { Member } from './Member';
 
 export type Club = {
   tag: string;
@@ -7,4 +7,4 @@ export type Club = {
   requiredTrophies: number;
   trophies: number;
   members: Member[];
-}
+};

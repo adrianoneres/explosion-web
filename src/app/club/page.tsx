@@ -1,5 +1,4 @@
-
-import ClubDetails from "./components/ClubDetails";
+import ClubDetails from './components/ClubDetails';
 
 export default function ClubPage() {
   return <ClubDetails />;

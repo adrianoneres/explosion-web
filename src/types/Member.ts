@@ -6,5 +6,5 @@ export type Member = {
   trophies: number;
   icon: {
     id: number;
-  }
-}
+  };
+};
