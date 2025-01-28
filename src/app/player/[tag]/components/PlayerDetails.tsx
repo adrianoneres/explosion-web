@@ -1,22 +1,42 @@
 'use client';
 
-import { use } from "react"
+import { use, useEffect, useMemo, useState } from "react"
 import { format } from 'date-fns';
 import { useParams } from "next/navigation";
 
 import { getPlayer } from "@/services";
 import { Player } from "@/types/Player";
 import { Trophy } from "@/components/Trophy";
+import Loading from "@/app/loading";
 
 export default function PlayerDetails() {
   const { tag } = useParams();
-  const data: Player = use(getPlayer(tag as string));
-  const isAboveGoal = process.env.NEXT_PUBLIC_TROPHY_GOAL && data.trophies >= Number(process.env.NEXT_PUBLIC_TROPHY_GOAL);
-  const goalDifference = process.env.NEXT_PUBLIC_TROPHY_GOAL ? Number(process.env.NEXT_PUBLIC_TROPHY_GOAL) - data.trophies : 0;
+  const [data, setData] = useState<Player>({} as Player);
+  const [isLoading, setIsLoading] = useState(true);
+  
+  useEffect(() => {
+    if (tag) { 
+      getPlayer(tag as string)
+      .then(response => {
+        setData(response);
+        setIsLoading(false);
+      })
+    }
+  }, [tag])
 
-  if (!data) {
-    return '';
-  }
+  const isAboveGoal = useMemo(() => 
+    process.env.NEXT_PUBLIC_TROPHY_GOAL 
+    && data.trophies >= Number(process.env.NEXT_PUBLIC_TROPHY_GOAL), 
+    [data.trophies]
+  )
+
+  const goalDifference = useMemo(() => 
+    process.env.NEXT_PUBLIC_TROPHY_GOAL 
+    ? Number(process.env.NEXT_PUBLIC_TROPHY_GOAL) - data.trophies : 0, 
+    [data.trophies]
+  );
+  
+  if (isLoading) return <Loading />;
 
   return (
     <>

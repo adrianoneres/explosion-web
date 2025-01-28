@@ -1,16 +1,27 @@
 'use client';
 
-import { use } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link";
 import { format } from 'date-fns';
 
+import Loading from "@/app/loading";
 import { Club } from "@/types/Club";
-import { getClub } from "@/services";
 import { Trophy } from "@/components/Trophy";
 import { Role } from "@/components/Role";
+import { getClub } from "@/services";
 
 export default function ClubDetails() {
-  const data: Club = use(getClub());
+  const [data, setData] = useState<Club>({} as Club);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    getClub().then(res => {
+      setData(res);
+      setIsLoading(false);
+    });
+  }, [])
+
+  if (isLoading) return <Loading />
 
   return (
     <>

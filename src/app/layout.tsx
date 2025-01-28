@@ -38,7 +38,7 @@ export default function RootLayout({
         className={`${inter.variable} ${nougat.variable} font-sansantialiased min-h-screen bg-gradient-to-b from-amber-300 to-amber-500`}
       >
         <div className="my-8 mx-auto px-8">
-          <Link href="/club" prefetch={false}>
+          <Link href="/">
             <Image 
               src={logo} 
               alt="Explosion logo" 
