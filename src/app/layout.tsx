@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
 import localFont from 'next/font/local'
 import { Inter } from 'next/font/google'
 
-import logo from '../../public/logo.png';
+import { Header } from "@/components/Header";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -38,14 +36,7 @@ export default function RootLayout({
         className={`${inter.variable} ${nougat.variable} font-sansantialiased min-h-screen bg-gradient-to-b from-amber-300 to-amber-500`}
       >
         <div className="my-8 mx-auto px-8">
-          <Link href="/">
-            <Image 
-              src={logo} 
-              alt="Explosion logo" 
-              className="mx-auto md:max-w-96 max-w-60" 
-              priority 
-            />
-          </Link>
+          <Header />
           <main className="mt-4">
             {children}
           </main>
