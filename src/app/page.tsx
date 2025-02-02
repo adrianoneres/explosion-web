@@ -13,7 +13,7 @@ export default function Home() {
         <section className="mx-auto flex min-h-full max-w-[800px] flex-col gap-8">
           <h1 className="mx-auto text-4xl">Seja bem-vindo à aliança EXP!</h1>
           <p className="mx-auto text-center">
-            A <span className="font-bold">alicança EXP</span> é formada pelos clubes{' '}
+            A <span className="font-bold">Aliança EXP</span> é formada pelos clubes{' '}
             <span className="font-bold">Explosion 🌋</span> e{' '}
             <span className="font-bold">Experience ⚡️</span>.
           </p>
