@@ -14,7 +14,7 @@ export function Trophy({ size = 'md', className }: TrophyProps) {
       <Image
         src={trophy}
         alt="Trophy"
-        className={classNames(`${className} rotate-6`, {
+        className={classNames(`${className} -rotate-6`, {
           'max-w-10': size === 'lg',
           'max-w-6': size === 'md',
           'max-w-4': size === 'sm',

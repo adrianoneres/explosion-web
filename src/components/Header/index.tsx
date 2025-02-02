@@ -1,12 +1,20 @@
-import Image from 'next/image';
-import Link from 'next/link';
+'use client';
 
-import logo from '../../../public/logo.png';
+import Link from 'next/link';
+import { useParams } from 'next/navigation';
+
+import { Logo } from '../Logo';
+import { useMemo } from 'react';
+import { getExp } from '@/helpers/exp.helper';
 
 export function Header() {
+  const { exp } = useParams();
+
+  const expClub = useMemo(() => getExp(exp as string), [exp]);
+
   return (
     <Link href="/">
-      <Image src={logo} alt="Explosion logo" className="mx-auto max-w-60 md:max-w-96" priority />
+      <Logo exp={expClub} className="max-w-60" />
     </Link>
   );
 }
